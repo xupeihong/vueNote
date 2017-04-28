@@ -65,11 +65,9 @@ export default {
             var max = 1000000;
             var num = Math.random() * (max - min) + min;
             num = Math.round(num);
-            alert(num)
-
+            // alert(num)
             var vtiele = $("#vtile").val();
             var vcontent = $("#go").val();
-           
             this.$store.commit('savenote', {
                 id: num,
                 title: vtiele,

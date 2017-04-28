@@ -29,8 +29,7 @@ export default {
         //得到所有的笔记
         getNote() {
             return this.$store.state.notes;
-            // console.log(this.$store.state.notes[0])
-        }
+                    }
     },
     methods: {
         //必须触发一个mutations执行，必须使用commit提交
@@ -39,8 +38,8 @@ export default {
             var max = 1000000;
             var num = Math.random() * (max - min) + min;
             num = Math.round(num);
-            alert(num)
-            alert(this.$store.state.note.title)
+            // alert(num)
+            // alert(this.$store.state.note.title)
                 // alert(this.$store.state.note.title)
             if (this.$store.state.note.title) {
                 // var num = this.$store.state.note.id;
@@ -50,7 +49,7 @@ export default {
                     date: new Date().toLocaleString(),
                     content: this.$store.state.note.content
                 })
-                console.log()
+                
             } else {
                 alert("暂时没笔记可添加");
             }

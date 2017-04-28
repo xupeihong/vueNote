@@ -93,8 +93,8 @@ const store = new Vuex.Store({
         savenote(state, note) {
             state.note = note;
             // state.notes.push(note)
-            alert(state.note.title);
-            alert(state.note.content);
+            // alert(state.note.title);
+            // alert(state.note.content);
         }
     }
 
