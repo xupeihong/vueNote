@@ -61,6 +61,7 @@ export default {
     props: {},
     methods: {
         savenote() {
+            // 判断笔记是新增还是修改
             var min = 1;
             var max = 1000000;
             var num = Math.random() * (max - min) + min;
@@ -74,6 +75,7 @@ export default {
                 date: new Date().toLocaleString(),
                 content: vcontent
             })
+            alert("保存成功！");
         }
     }
 }

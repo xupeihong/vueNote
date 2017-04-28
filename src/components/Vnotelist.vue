@@ -29,7 +29,7 @@ export default {
         //得到所有的笔记
         getNote() {
             return this.$store.state.notes;
-                    }
+        }
     },
     methods: {
         //必须触发一个mutations执行，必须使用commit提交
@@ -40,7 +40,7 @@ export default {
             num = Math.round(num);
             // alert(num)
             // alert(this.$store.state.note.title)
-                // alert(this.$store.state.note.title)
+            // alert(this.$store.state.note.title)
             if (this.$store.state.note.title) {
                 // var num = this.$store.state.note.id;
                 this.$store.commit('addnote', {
@@ -49,7 +49,7 @@ export default {
                     date: new Date().toLocaleString(),
                     content: this.$store.state.note.content
                 })
-                
+                alert("添加成功！");
             } else {
                 alert("暂时没笔记可添加");
             }
