@@ -58,7 +58,7 @@ const store = new Vuex.Store({
         addnote(state, note) {
             axios({
                 url: 'http://127.0.0.1:3200/api/comments',
-                method: 'post',
+                method: 'POST',
                 data: {
                     id: note.id,
                     title: note.title,
@@ -76,7 +76,7 @@ const store = new Vuex.Store({
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            })
+            });
 
             state.notes.push(note);
             // 将上次的内容清空
@@ -91,7 +91,10 @@ const store = new Vuex.Store({
         },
         //保存笔记
         savenote(state, note) {
-            state.notes.push(note)
+            state.note = note;
+            // state.notes.push(note)
+            alert(state.note.title);
+            alert(state.note.content);
         }
     }
 

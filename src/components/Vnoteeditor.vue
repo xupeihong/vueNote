@@ -3,7 +3,7 @@
         <div class="panel-body marked ">
             <div class="col-lg-12">
                 <Vbutton type="info" @click="savenote" class="save col-lg-1">保存</Vbutton>
-                <input type="text" class="form-control ntitle col-lg-11" v-model="settitle">
+                <input type="text" class="form-control ntitle col-lg-11" v-model="settitle" id="vtile">
             </div>
             <div class="col-lg-12">
                 <div class="editer col-lg-6">
@@ -61,11 +61,20 @@ export default {
     props: {},
     methods: {
         savenote() {
+            var min = 1;
+            var max = 1000000;
+            var num = Math.random() * (max - min) + min;
+            num = Math.round(num);
+            alert(num)
+
+            var vtiele = $("#vtile").val();
+            var vcontent = $("#go").val();
+           
             this.$store.commit('savenote', {
-                id: 6,
-                title: 'niaho',
+                id: num,
+                title: vtiele,
                 date: new Date().toLocaleString(),
-                content: '内筒'
+                content: vcontent
             })
         }
     }

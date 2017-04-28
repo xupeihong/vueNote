@@ -16,8 +16,6 @@ import Vbutton from './Vbutton'
 import Vnoteitem from './Vnoteitem'
 import $ from 'jquery'
 
-
-
 export default {
     name: 'Vnotelist',
     data() {
@@ -28,6 +26,7 @@ export default {
         Vnoteitem
     },
     computed: {
+        //得到所有的笔记
         getNote() {
             return this.$store.state.notes;
             // console.log(this.$store.state.notes[0])
@@ -40,17 +39,18 @@ export default {
             var max = 1000000;
             var num = Math.random() * (max - min) + min;
             num = Math.round(num);
-            // alert(this.$store.state.note.title)
+            alert(num)
+            alert(this.$store.state.note.title)
+                // alert(this.$store.state.note.title)
             if (this.$store.state.note.title) {
                 // var num = this.$store.state.note.id;
-                alert(num)
-
                 this.$store.commit('addnote', {
                     id: num,
                     title: this.$store.state.note.title,
                     date: new Date().toLocaleString(),
                     content: this.$store.state.note.content
                 })
+                console.log()
             } else {
                 alert("暂时没笔记可添加");
             }
