@@ -29,20 +29,33 @@ export default {
     },
     computed: {
         getNote() {
-            return this.$store.state.notes
+            return this.$store.state.notes;
             // console.log(this.$store.state.notes[0])
         }
     },
     methods: {
         //必须触发一个mutations执行，必须使用commit提交
         addnote() {
-            this.$store.commit('addnote', {
-                id: 6,
-                title: "你好",
-                date: new Date().toLocaleString(),
-                content: '内筒'
-            })
+            var min = 1;
+            var max = 1000000;
+            var num = Math.random() * (max - min) + min;
+            num = Math.round(num);
+            // alert(this.$store.state.note.title)
+            if (this.$store.state.note.title) {
+                // var num = this.$store.state.note.id;
+                alert(num)
+
+                this.$store.commit('addnote', {
+                    id: num,
+                    title: this.$store.state.note.title,
+                    date: new Date().toLocaleString(),
+                    content: this.$store.state.note.content
+                })
+            } else {
+                alert("暂时没笔记可添加");
+            }
         }
+
     }
 }
 </script>

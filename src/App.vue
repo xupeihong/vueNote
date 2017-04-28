@@ -81,7 +81,7 @@ export default {
     mounted() {
         axios.get('http://127.0.0.1:3200/api/comments')
             .then(function(response) {
-                console.log(response.data);
+                // console.log(response.data);
                 // this指向的问题
                 this.$store.state.notes = response.data;
             }.bind(this))

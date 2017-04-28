@@ -6,7 +6,7 @@ import router from './router'
 import Vuex from 'vuex'
 import $ from 'jquery'
 import axios from 'axios'
-
+import qs from 'qs'
 
 
 //1.开启状态管理
@@ -15,7 +15,7 @@ Vue.use(Vuex)
     // 3.创建全局可用的大仓库
 const store = new Vuex.Store({
     //state相当于整个程序的data，里面的数据不能直接修改，必须在moutations修改
-    state:{
+    state: {
         notes: ''
             // [{
             //     id: 1,
@@ -54,12 +54,42 @@ const store = new Vuex.Store({
     //进化
     mutations: {
         //载荷
+        //添加笔记
         addnote(state, note) {
-            state.notes.push(note)
+            axios({
+                url: 'http://127.0.0.1:3200/api/comments',
+                method: 'post',
+                data: {
+                    id: note.id,
+                    title: note.title,
+                    date: note.date,
+                    content: note.content
+                },
+                transformRequest: [function(data) {
+                    // 数据格式转换
+                    let ret = ''
+                    for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                }],
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+
+            state.notes.push(note);
+            // 将上次的内容清空
+            state.note.id = '';
+            state.note.title = '';
+            state.note.date = '';
+            state.note.content = '';
         },
+        //选中每条数据
         selectNote(state, note) {
             state.note = note
         },
+        //保存笔记
         savenote(state, note) {
             state.notes.push(note)
         }
