@@ -2,12 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import Login from './Login'
 import router from './router'
 import Vuex from 'vuex'
 import $ from 'jquery'
 import axios from 'axios'
 import qs from 'qs'
-
+import VueRouter from 'vue-router'
+import routes from 'routes'
 
 //1.开启状态管理
 //2.使用vuex
@@ -16,34 +18,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     //state相当于整个程序的data，里面的数据不能直接修改，必须在moutations修改
     state: {
-        notes: ''
-            // [{
-            //     id: 1,
-            //     title: 'ere',
-            //     date: '2017-04-25',
-            //     content: '- DASDAD'
-            // }, {
-            //     id: 2,
-            //     title: 'dierge',
-            //     date: '2017-04-25',
-            //     content: '- 4343'
-            // }, {
-            //     id: 3,
-            //     title: '第三个',
-            //     date: '2017-04-25',
-            //     content: '## 121'
-            // }, {
-            //     id: 4,
-            //     title: 'ere',
-            //     date: '2017-04-25',
-            //     content: '## DASDAD'
-            // }, {
-            //     id: 5,
-            //     title: 'er2e',
-            //     date: '2017-04-26',
-            //     content: '### DASDAD12'
-            // }]
-            ,
+        notes: '',
         note: {
             id: '',
             title: '',
@@ -98,7 +73,21 @@ const store = new Vuex.Store({
         }
     }
 
-})
+});
+
+
+// router.beforeEach((to, from, next) => {
+//     //NProgress.start();
+//     if (to.path == '/Login') {
+//         sessionStorage.removeItem('user');
+//     }
+//     let user = JSON.parse(sessionStorage.getItem('user'));
+//     if (!user && to.path != '/Login') {
+//         next({ path: '/Login' })
+//     } else {
+//         next()
+//     }
+// })
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -106,6 +95,8 @@ new Vue({
     el: '#app',
     router,
     store, //实例对象的时候，注册大仓库
+    // template: '<Login/>',
     template: '<App/>',
-    components: { App }
+    components: { App  }
+   
 })
