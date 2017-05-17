@@ -6,6 +6,7 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
                         <img alt="Brand" src="./assets/logo.png" height="30">
+                        
                     </a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
